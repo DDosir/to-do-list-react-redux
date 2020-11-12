@@ -1,4 +1,4 @@
-import {DONE_TODO, ADD_TODO, DELETE_TODO, CHANGE_VALUE} from "./actions";
+import {DONE_TODO, ADD_TODO, DELETE_TODO} from "./actions";
 
 const initState = {todos:
 		[
@@ -16,8 +16,6 @@ export function reducer(state = initState, action) {
 			return {...state, todos: state.todos.map((prop) => prop.id === action.payload ? {...prop, done: !prop.done} : prop)};
 		case DELETE_TODO:
 			return {...state, todos: state.todos.filter((prop) => prop.id !== action.payload)}
-		case CHANGE_VALUE:
-			return {...state, inputValue: action.payload};
 		default:
 			return state;
 	}
