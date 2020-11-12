@@ -1,51 +1,42 @@
 import React, { Component } from 'react';
 import './App.css';
-import Element from "./components/element";
 import Input from "./components/input";
-import state from "./store/state";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {addTodo, deleteTodo, doneTodo} from "./store/actionCreators";
+import {addTodo, changeInput, deleteTodo, doneTodo} from "./store/actionCreators";
+import List from "./components/list";
 
 class App extends Component {
   render() {
-    const {addTodo, doneTodo, deleteTodo} = this.props;
+    const {addTodo, doneTodo, deleteTodo, todos, changeInput, inputValue} = this.props;
     const handleInput = value => addTodo(value);
     const handleDone = id => doneTodo(id);
     const handleDelete = id => deleteTodo(id);
     return (
-      <div>
-        {state.getState().todos.map(({name, done, id}) =>
-              <Element
-                name={name}
-                done={done}
-                key={id}
-                id={id}
-                handleDone={handleDone}
-                handleDelete={handleDelete}
-              />
-            )
-        }
-        <Input handleAdd={handleInput}/>
-      </div>
+      <>
+        <List source={todos} handleDone={handleDone} handleDelete={handleDelete}/>
+        <Input inputValue={inputValue} changeInput={changeInput} handleAdd={handleInput}/>
+      </>
     );
   }
 }
 
-const putStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     todos: state.todos,
+    inputValue: state.inputValue,
   }
 }
 
-const putDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     addTodo: bindActionCreators(addTodo, dispatch),
     doneTodo: bindActionCreators(doneTodo, dispatch),
-    deleteTodo: bindActionCreators(deleteTodo, dispatch)
+    deleteTodo: bindActionCreators(deleteTodo, dispatch),
+    changeInput: bindActionCreators(changeInput, dispatch),
   }
 }
 
-const Wrapped_App = connect(putStateToProps, putDispatchToProps)(App)
+const WrappedApp = connect(mapStateToProps, mapDispatchToProps)(App)
 
-export default Wrapped_App;
+export default WrappedApp;

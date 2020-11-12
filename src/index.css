@@ -12,16 +12,16 @@ code {
     monospace;
 }
 
-.Element {
+.element {
   display: flex;
   width: 500px;
 }
 
-.Element > p {
+.element > p {
   width: 166px;
   margin: 5px;
 }
-.Element > button {
+.element > button {
   width: 41px;
   padding: 0;
 }

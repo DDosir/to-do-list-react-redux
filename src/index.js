@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Wrapped_App from './App';
+import WrappedApp from './App';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import state from "./store/state";
@@ -10,7 +10,7 @@ import state from "./store/state";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={state}>
-      <Wrapped_App />
+      <WrappedApp />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
