@@ -16,14 +16,15 @@ class App extends Component {
     return (
       <div>
         {state.getState().todos.map(({name, done, id}) =>
-            <Element
-              name={name}
-              done={done}
-              key={id}
-              id={id}
-              handleDone={handleDone}
-              handleDelete={handleDelete}
-            />)
+              <Element
+                name={name}
+                done={done}
+                key={id}
+                id={id}
+                handleDone={handleDone}
+                handleDelete={handleDelete}
+              />
+            )
         }
         <Input handleAdd={handleInput}/>
       </div>
