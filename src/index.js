@@ -10,7 +10,7 @@ import state from "./store/state";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={state}>
-      <WrappedApp />
+      <WrappedApp className={'app'}/>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

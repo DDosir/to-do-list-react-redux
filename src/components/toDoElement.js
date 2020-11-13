@@ -5,7 +5,7 @@ const ToDoElement = ({name, done, id, handleDone, handleDelete}) => {
 	const handleDeleteElem = () => handleDelete(id);
 	return (
 		<div className={'element'} key={id}>
-			<p onClick={handleChangeStatus}> {done ? '+' : '-'} {name}</p>
+			<p onClick={handleChangeStatus} className={done ? 'done' : null}>{name}</p>
 			<button onClick={handleDeleteElem}>Del</button>
 		</div>
 	)

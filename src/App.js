@@ -3,19 +3,19 @@ import './App.css';
 import Input from "./components/input";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {addTodo, changeInput, deleteTodo, doneTodo} from "./store/actionCreators";
+import {addTodo, handleInput, deleteTodo, doneTodo} from "./store/actionCreators";
 import List from "./components/list";
 
 class App extends Component {
   render() {
-    const {addTodo, doneTodo, deleteTodo, todos, changeInput, inputValue} = this.props;
-    const handleInput = value => addTodo(value);
+    const {addTodo, doneTodo, deleteTodo, todos, handleInput, inputValue} = this.props;
+    const handleAdd = value => addTodo(value);
     const handleDone = id => doneTodo(id);
     const handleDelete = id => deleteTodo(id);
     return (
       <>
-        <List source={todos} handleDone={handleDone} handleDelete={handleDelete}/>
-        <Input inputValue={inputValue} changeInput={changeInput} handleAdd={handleInput}/>
+        <List toDoList={todos} handleDone={handleDone} handleDelete={handleDelete}/>
+        <Input inputValue={inputValue} handleInput={handleInput} handleAdd={handleAdd}/>
       </>
     );
   }
@@ -33,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
     addTodo: bindActionCreators(addTodo, dispatch),
     doneTodo: bindActionCreators(doneTodo, dispatch),
     deleteTodo: bindActionCreators(deleteTodo, dispatch),
-    changeInput: bindActionCreators(changeInput, dispatch),
+    handleInput: bindActionCreators(handleInput, dispatch),
   }
 }
 

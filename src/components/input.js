@@ -1,12 +1,12 @@
 import React from "react";
 
-const Input = ({inputValue, changeInput, handleAdd}) => {
-	const handleAddElement = () => handleAdd(inputValue);
+const Input = ({inputValue, handleInput, handleAdd}) => {
+	const handleAddElement = () => inputValue.trim() && handleAdd(inputValue);
 	return (
-		<div>
+		<div className={'element input'}>
 			<input
 				placeholder={'input'}
-				onChange={event => changeInput(event.target.value)}
+				onChange={event => handleInput(event.target.value)}
 				value={inputValue}
 			/>
 			<button onClick={handleAddElement}>Add</button>

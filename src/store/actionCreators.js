@@ -1,4 +1,4 @@
-import {ADD_TODO, DELETE_TODO, DONE_TODO, CHANGE_INPUT} from "./actions";
+import {ADD_TODO, DELETE_TODO, DONE_TODO, HANDLE_INPUT} from "./actions";
 import idGenerator from "../utils/idGenerator";
 
 export const addTodo = name => ({
@@ -19,8 +19,8 @@ export const deleteTodo = id => ({
 	payload: id,
 })
 
-export const changeInput = value => ({
-	type: CHANGE_INPUT,
+export const handleInput = value => ({
+	type: HANDLE_INPUT,
 	payload: value,
 })
 

@@ -1,13 +1,8 @@
-import {DONE_TODO, ADD_TODO, DELETE_TODO, CHANGE_INPUT} from "./actions";
+import {DONE_TODO, ADD_TODO, DELETE_TODO, HANDLE_INPUT} from "./actions";
 
 const initState = {
 	inputValue: '',
-	todos:
-		[
-			// {name: 'Learn redux', done: true, id: 1},
-			// {name: 'Learn react', done: false, id: 2},
-			// {name: 'Learn react-redux', done: false, id: 3},
-		]
+	todos: [],
 }
 
 export function reducer(state = initState, action) {
@@ -21,7 +16,7 @@ export function reducer(state = initState, action) {
 					? {...item, done: !item.done} : item)};
 		case DELETE_TODO:
 			return {...state, todos: state.todos.filter(({id}) => id !== action.payload)};
-		case CHANGE_INPUT:
+		case HANDLE_INPUT:
 			return {...state, inputValue: action.payload};
 		default:
 			return state;
